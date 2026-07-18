@@ -38,7 +38,7 @@ Phase 3: Presentation - Core UI (Jetpack Compose)
 
 Goal: Build the foldable-ready, edge-to-edge UI.
 
-[ ] Step 3.1: Setup presentation/theme (Color, Theme, Type - Obsidian/Cyan aesthetic).
+[x] Step 3.1: Setup presentation/theme (Color, Theme, Type - Obsidian/Cyan aesthetic).
 
 [x] Step 3.2: Configure presentation/navigation/AppNavGraph.kt.
 
