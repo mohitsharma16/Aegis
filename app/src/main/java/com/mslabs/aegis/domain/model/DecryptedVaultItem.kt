@@ -8,4 +8,5 @@ data class DecryptedVaultItem(
     val secret: String?,
     val notes: String?,
     val updatedAtEpochMillis: Long,
+    val totpSecret: String? = null,
 )
