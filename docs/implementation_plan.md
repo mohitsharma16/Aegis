@@ -40,7 +40,7 @@ Goal: Build the foldable-ready, edge-to-edge UI.
 
 [ ] Step 3.1: Setup presentation/theme (Color, Theme, Type - Obsidian/Cyan aesthetic).
 
-[ ] Step 3.2: Configure presentation/navigation/AppNavGraph.kt.
+[x] Step 3.2: Configure presentation/navigation/AppNavGraph.kt.
 
 [ ] Step 3.3: Build presentation/screens/vault/VaultViewModel.kt (Search & StateFlow).
 
