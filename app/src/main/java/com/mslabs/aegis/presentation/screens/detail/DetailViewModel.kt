@@ -6,7 +6,7 @@ import com.mslabs.aegis.domain.repository.VaultRepository
 class DetailViewModel(
     private val repository: VaultRepository,
 ) {
-    fun save(item: DecryptedVaultItem) {
+    suspend fun save(item: DecryptedVaultItem) {
         repository.saveVaultItem(item)
     }
 }

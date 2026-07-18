@@ -16,9 +16,9 @@ Goal: Establish Hilt, hardware encryption, and the Room database.
 
 [x] Step 1.5: Create di/AppModule.kt and di/DatabaseModule.kt (Hilt Setup).
 
-[ ] Step 1.6: Define domain/repository/VaultRepository.kt (Interface).
+[x] Step 1.6: Define domain/repository/VaultRepository.kt (Interface).
 
-[ ] Step 1.7: Implement data/repository/VaultRepositoryImpl.kt (Connecting Room to Keystore).
+[x] Step 1.7: Implement data/repository/VaultRepositoryImpl.kt (Connecting Room to Keystore).
 
 Phase 2: Domain Logic & Cryptography
 
