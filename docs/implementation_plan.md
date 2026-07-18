@@ -28,11 +28,11 @@ Goal: Add the math and business logic for our premium features.
 
 [x] Step 2.2: Implement domain/usecase/GenerateTotpUseCase.kt.
 
-[ ] Step 2.3: Implement domain/model/DecryptedVaultItem.kt.
+[x] Step 2.3: Implement domain/model/DecryptedVaultItem.kt.
 
 [x] Step 2.4: Implement security/PasswordAuditor.kt (zxcvbn4j engine).
 
-[ ] Step 2.5: Implement domain/usecase/ImportCsvUseCase.kt & ExportJsonUseCase.kt (BYOC Backups via SAF).
+[x] Step 2.5: Implement domain/usecase/ImportCsvUseCase.kt & ExportJsonUseCase.kt (BYOC Backups via SAF).
 
 Phase 3: Presentation - Core UI (Jetpack Compose)
 
