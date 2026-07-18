@@ -24,13 +24,13 @@ Phase 2: Domain Logic & Cryptography
 
 Goal: Add the math and business logic for our premium features.
 
-[ ] Step 2.1: Implement security/TotpGenerator.kt (HMAC-SHA1 math).
+[x] Step 2.1: Implement security/TotpGenerator.kt (HMAC-SHA1 math).
 
-[ ] Step 2.2: Implement domain/usecase/GenerateTotpUseCase.kt.
+[x] Step 2.2: Implement domain/usecase/GenerateTotpUseCase.kt.
 
 [ ] Step 2.3: Implement domain/model/DecryptedVaultItem.kt.
 
-[ ] Step 2.4: Implement security/PasswordAuditor.kt (zxcvbn4j engine).
+[x] Step 2.4: Implement security/PasswordAuditor.kt (zxcvbn4j engine).
 
 [ ] Step 2.5: Implement domain/usecase/ImportCsvUseCase.kt & ExportJsonUseCase.kt (BYOC Backups via SAF).
 
