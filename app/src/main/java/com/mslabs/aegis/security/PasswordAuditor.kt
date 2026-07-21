@@ -10,9 +10,15 @@ data class PasswordAuditResult(
     val crackTimeSeconds: Double,
 )
 
+/**
+ * No default argument on [zxcvbn]: a Kotlin default generates a second constructor,
+ * and Hilt rejects a type with two @Inject constructors. The instance is bound in
+ * SecurityModule, which also keeps it a singleton - Zxcvbn loads its frequency
+ * dictionaries on construction and is expensive to build per call.
+ */
 @Singleton
 class PasswordAuditor @Inject constructor(
-    private val zxcvbn: Zxcvbn = Zxcvbn(),
+    private val zxcvbn: Zxcvbn,
 ) {
 
     fun audit(password: String): PasswordAuditResult {

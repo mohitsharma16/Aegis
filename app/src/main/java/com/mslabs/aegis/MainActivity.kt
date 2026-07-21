@@ -3,7 +3,7 @@ package com.mslabs.aegis
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.core.view.WindowCompat
+import androidx.activity.enableEdgeToEdge
 import com.mslabs.aegis.presentation.navigation.AppNavGraph
 import com.mslabs.aegis.presentation.theme.AegisTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        enableEdgeToEdge()
 
         // Ensure you don't allow screenshots of the vault in the recent apps menu
         window.setFlags(

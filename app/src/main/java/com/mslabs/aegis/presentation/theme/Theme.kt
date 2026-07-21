@@ -1,15 +1,12 @@
 package com.mslabs.aegis.presentation.theme
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
@@ -51,7 +48,7 @@ fun AegisTheme(
     content: @Composable () -> Unit,
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-    ConfigureSystemBars(colorScheme = colorScheme, darkTheme = darkTheme)
+    ConfigureSystemBars(darkTheme = darkTheme)
 
     MaterialTheme(
         colorScheme = colorScheme,
@@ -60,21 +57,21 @@ fun AegisTheme(
     )
 }
 
+/**
+ * Under edge-to-edge the bars are transparent and drawn behind by the system, so
+ * statusBarColor/navigationBarColor are no-ops on API 35+. All that is left to
+ * control is whether the system draws its icons dark or light.
+ */
 @Composable
-private fun ConfigureSystemBars(
-    colorScheme: ColorScheme,
-    darkTheme: Boolean,
-) {
+private fun ConfigureSystemBars(darkTheme: Boolean) {
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.background.toArgb()
-            window.navigationBarColor = colorScheme.background.toArgb()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = !darkTheme
+            WindowCompat.getInsetsController(window, view).apply {
+                isAppearanceLightStatusBars = !darkTheme
+                isAppearanceLightNavigationBars = !darkTheme
             }
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 }

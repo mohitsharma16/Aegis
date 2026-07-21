@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "fc8018b5557d30dd4108e911c9999e69",
+    "identityHash": "df26b9cf5bfe3a6318219c07b3b8bc18",
     "entities": [
       {
         "tableName": "credentials",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `itemType` TEXT NOT NULL, `encryptedUsername` BLOB, `encryptedPassword` BLOB, `encryptedNotes` BLOB, `encryptedTotpSecret` BLOB, `encryptedPasskeyData` BLOB, `iv` BLOB NOT NULL, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `deletedAt` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `title` TEXT NOT NULL, `itemType` TEXT NOT NULL, `encryptedUsername` BLOB, `encryptedPassword` BLOB, `encryptedNotes` BLOB, `encryptedTotpSecret` BLOB, `encryptedPasskeyData` BLOB, `encryptedWebsiteUrl` BLOB, `createdAt` INTEGER NOT NULL, `updatedAt` INTEGER NOT NULL, `deletedAt` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -52,10 +52,9 @@
             "affinity": "BLOB"
           },
           {
-            "fieldPath": "iv",
-            "columnName": "iv",
-            "affinity": "BLOB",
-            "notNull": true
+            "fieldPath": "encryptedWebsiteUrl",
+            "columnName": "encryptedWebsiteUrl",
+            "affinity": "BLOB"
           },
           {
             "fieldPath": "createdAt",
@@ -81,11 +80,60 @@
             "id"
           ]
         }
+      },
+      {
+        "tableName": "audit_results",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`credentialId` TEXT NOT NULL, `entropyScore` INTEGER NOT NULL, `isDuplicate` INTEGER NOT NULL, `auditedAtEpochMillis` INTEGER NOT NULL, PRIMARY KEY(`credentialId`), FOREIGN KEY(`credentialId`) REFERENCES `credentials`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "credentialId",
+            "columnName": "credentialId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "entropyScore",
+            "columnName": "entropyScore",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isDuplicate",
+            "columnName": "isDuplicate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "auditedAtEpochMillis",
+            "columnName": "auditedAtEpochMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "credentialId"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "credentials",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "credentialId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fc8018b5557d30dd4108e911c9999e69')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'df26b9cf5bfe3a6318219c07b3b8bc18')"
     ]
   }
 }

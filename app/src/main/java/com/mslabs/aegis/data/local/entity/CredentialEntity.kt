@@ -5,6 +5,14 @@ import androidx.room.PrimaryKey
 import com.mslabs.aegis.domain.model.VaultItemType
 import java.util.UUID
 
+/**
+ * The single polymorphic vault table (tdd.md §3).
+ *
+ * Every encrypted* column is a self-contained blob laid out as
+ * [ivLength: 1 byte][iv][ciphertext], so each field carries its own GCM IV.
+ * Reusing one IV across fields under the same key would be a GCM nonce reuse
+ * bug, which is why there is no shared iv column.
+ */
 @Entity(tableName = "credentials")
 data class CredentialEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
@@ -17,8 +25,7 @@ data class CredentialEntity(
     val encryptedNotes: ByteArray?,
     val encryptedTotpSecret: ByteArray?,
     val encryptedPasskeyData: ByteArray?,
-
-    val iv: ByteArray,
+    val encryptedWebsiteUrl: ByteArray?,
 
     val createdAt: Long = System.currentTimeMillis(),
     val updatedAt: Long = System.currentTimeMillis(),

@@ -42,11 +42,11 @@ Goal: Build the foldable-ready, edge-to-edge UI.
 
 [x] Step 3.2: Configure presentation/navigation/AppNavGraph.kt.
 
-[ ] Step 3.3: Build presentation/screens/vault/VaultViewModel.kt (Search & StateFlow).
+[x] Step 3.3: Build presentation/screens/vault/VaultViewModel.kt (Search & StateFlow).
 
-[ ] Step 3.4: Build presentation/screens/vault/VaultListScreen.kt (Adaptive Multi-Pane).
+[x] Step 3.4: Build presentation/screens/vault/VaultListScreen.kt (Adaptive Multi-Pane).
 
-[ ] Step 3.5: Build presentation/screens/detail/DetailViewModel.kt & ItemDetailScreen.kt.
+[x] Step 3.5: Build presentation/screens/detail/DetailViewModel.kt & ItemDetailScreen.kt.
 
 Phase 4: OS Integrations (The "Premium" Magic)
 

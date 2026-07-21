@@ -3,6 +3,7 @@ package com.mslabs.aegis.di
 import android.content.Context
 import androidx.room.Room
 import com.mslabs.aegis.data.local.AppDatabase
+import com.mslabs.aegis.data.local.dao.AuditDao
 import com.mslabs.aegis.data.local.dao.CredentialDao
 import dagger.Module
 import dagger.Provides
@@ -30,5 +31,10 @@ object DatabaseModule {
     @Provides
     fun provideCredentialDao(database: AppDatabase): CredentialDao {
         return database.credentialDao()
+    }
+
+    @Provides
+    fun provideAuditDao(database: AppDatabase): AuditDao {
+        return database.auditDao()
     }
 }
